@@ -1,17 +1,19 @@
 package tr.fundsapp.TrFundsAppApi.data.dao;
 
 import jakarta.persistence.*;
+import lombok.ToString;
+
+import java.io.Serializable;
 
 @Entity
-@IdClass(FundPriceId.class)
 @Table(name = "fund_prices")
-public class FundPrice {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private String date;
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private String fund_code;
+@ToString
+public class FundPrice implements Serializable {
+
+
+    @EmbeddedId FundPriceId id;
+    @Column(name = "price")
     private Double price;
-    private Double total_fund_value;
+    @Column(name = "total_fund_value")
+    private Double totalFundValue;
 }

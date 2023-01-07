@@ -1,25 +1,21 @@
 package tr.fundsapp.TrFundsAppApi.data.dao;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import java.io.Serial;
 import java.io.Serializable;
 
-@EqualsAndHashCode
-@ToString
 @Embeddable
+@ToString
 public class FundPriceId implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = -1L;
-
+    @Column(name = "date")
     private String date;
-    private String fund_code;
+    @Column(name = "fund_code")
+    private String fundCode;
 
-    public FundPriceId(String date, String fund_code) {
-        this.date = date;
-        this.fund_code = fund_code;
+    public FundPriceId() {
     }
+
 }
