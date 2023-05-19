@@ -1,6 +1,7 @@
 package tr.fundsapp.TrFundsAppApi.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import tr.fundsapp.TrFundsAppApi.data.dao.FundPrice;
@@ -24,6 +25,7 @@ public class FundPricesController {
     }
 
     @GetMapping(path = "/getOne")
+    @PreAuthorize("hasRole('ADMIN')")
     public @ResponseBody
     FundPricesDto getOneById(@RequestParam String fundCode,
                              @RequestParam String date) {

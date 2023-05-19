@@ -62,4 +62,4 @@ hs_err_pid*
 # IntelliJ project files
 out
 gen
-!/src/main/resources/application.properties
+/src/main/resources/application.properties
