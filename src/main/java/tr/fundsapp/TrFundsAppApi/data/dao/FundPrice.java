@@ -1,6 +1,7 @@
 package tr.fundsapp.TrFundsAppApi.data.dao;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "fund_prices")
 @ToString
+@Data
 public class FundPrice implements Serializable {
 
 
