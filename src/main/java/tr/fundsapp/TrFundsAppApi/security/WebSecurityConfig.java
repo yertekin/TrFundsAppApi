@@ -19,7 +19,7 @@ import tr.fundsapp.TrFundsAppApi.security.services.UserDetailsServiceImpl;
 
 @Configuration
 @EnableMethodSecurity(
-        // securedEnabled = true,
+        securedEnabled = true
         // jsr250Enabled = true,
         // prePostEnabled = true
         )
