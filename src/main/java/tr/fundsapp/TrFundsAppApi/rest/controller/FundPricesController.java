@@ -25,7 +25,7 @@ public class FundPricesController {
     }
 
     @GetMapping(path = "/getOne")
-    @Secured("ROLE_USER")
+    @Secured({"ROLE_USER","ROLE_ADMIN"})
     public @ResponseBody
     FundPricesDto getOneById(@RequestParam String fundCode,
                              @RequestParam String date) {

@@ -4,8 +4,8 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tr.fundsapp.TrFundsAppApi.data.FundPricesRepository;
+import tr.fundsapp.TrFundsAppApi.data.dao.FundId;
 import tr.fundsapp.TrFundsAppApi.data.dao.FundPrice;
-import tr.fundsapp.TrFundsAppApi.data.dao.FundPriceId;
 import tr.fundsapp.TrFundsAppApi.mapper.FundPricesMapper;
 import tr.fundsapp.TrFundsAppApi.service.dto.FundPricesDto;
 
@@ -29,10 +29,10 @@ public class FundPricesService {
     }
 
     public FundPricesDto getPriceById(String fundCode, String date) {
-        FundPriceId fundPriceId = new FundPriceId();
-        fundPriceId.setDate(date);
-        fundPriceId.setFundCode(fundCode);
-        Optional<FundPrice> fundPrice = repository.findById(fundPriceId);
+        FundId fundId = new FundId();
+        fundId.setDate(date);
+        fundId.setFundCode(fundCode);
+        Optional<FundPrice> fundPrice = repository.findById(fundId);
         return fundPrice.map(price -> mapper.toFundPricesDto(price)).orElse(null);
     }
 

@@ -10,14 +10,14 @@ import java.io.Serializable;
 @Embeddable
 @Data
 @ToString
-public class FundPriceId implements Serializable {
+public class FundId implements Serializable {
 
     @Column(name = "date")
     private String date;
     @Column(name = "fund_code")
     private String fundCode;
 
-    public FundPriceId() {
+    public FundId() {
     }
 
 }

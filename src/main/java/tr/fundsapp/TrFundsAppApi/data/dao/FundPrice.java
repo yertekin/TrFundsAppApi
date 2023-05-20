@@ -12,8 +12,8 @@ import java.io.Serializable;
 @Data
 public class FundPrice implements Serializable {
 
-
-    @EmbeddedId FundPriceId id;
+    @EmbeddedId
+    FundId id;
     @Column(name = "price")
     private Double price;
     @Column(name = "total_fund_value")
