@@ -3,6 +3,7 @@ package tr.fundsapp.TrFundsAppApi.security.jwt;
 import io.jsonwebtoken.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import tr.fundsapp.TrFundsAppApi.security.services.UserDetailsImpl;
 import java.util.Date;
 
 @Component
+@Log4j2
 public class JwtUtils {
 
     @Value("${fundsApp.TrFundsAppApi.jwtCookieName}")
@@ -50,15 +52,15 @@ public class JwtUtils {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
-            System.out.println("Invalid JWT signature: " + e.getMessage());
+            log.error("Invalid JWT signature: " + e.getMessage());
         } catch (MalformedJwtException e) {
-            System.out.println("Invalid JWT token: " + e.getMessage());
+            log.error("Invalid JWT token: " + e.getMessage());
         } catch (ExpiredJwtException e) {
-            System.out.println("JWT token is expired: " + e.getMessage());
+            log.error("JWT token is expired: " + e.getMessage());
         } catch (UnsupportedJwtException e) {
-            System.out.println("Invalid JWT unsupported: " + e.getMessage());
+            log.error("Invalid JWT unsupported: " + e.getMessage());
         } catch (IllegalArgumentException e) {
-            System.out.println("JWT claims string is empty: " + e.getMessage());
+            log.error("JWT claims string is empty: " + e.getMessage());
         }
         return false;
     }

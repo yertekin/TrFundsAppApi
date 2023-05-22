@@ -37,7 +37,6 @@ public class UserPortfolioService {
     public boolean portfolioTransaction(UserPortfolioRequest request) {
 
         String username = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-        System.out.println("userPortfolioService username: " + username);
 
         FundId fundId = new FundId();
         fundId.setFundCode(request.getFundCode());

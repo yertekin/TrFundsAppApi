@@ -4,6 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +15,7 @@ import tr.fundsapp.TrFundsAppApi.security.services.UserDetailsServiceImpl;
 
 import java.io.IOException;
 
+@Log4j2
 public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Autowired
@@ -38,7 +40,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (Exception e) {
-            System.out.println("Cannot set user authentication: " + e);
+            logger.error("Cannot set user authentication: " + e);
         }
 
         filterChain.doFilter(request, response);
